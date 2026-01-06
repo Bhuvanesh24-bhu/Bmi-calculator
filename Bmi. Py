@@ -1,0 +1,52 @@
+def get_float_input(prompt):
+    """Get a valid positive float from user."""
+    while True:
+        try:
+            value = float(input(prompt))
+            if value <= 0:
+                print("Value must be positive. Try again.")
+                continue
+            return value
+        except ValueError:
+            print("Invalid input! Enter a number.")
+
+
+def calculate_bmi(weight, height):
+    """Return BMI value."""
+    return weight / (height ** 2)
+
+
+def get_bmi_category(bmi):
+    """Return BMI category based on value."""
+    if bmi < 18.5:
+        return "Underweight"
+    elif bmi < 24.9:
+        return "Normal Weight"
+    elif bmi < 29.9:
+        return "Overweight"
+    else:
+        return "Obese"
+
+
+def display_summary(weight, height, bmi, category):
+    print("\n================ BMI REPORT ================")
+    print(f"Weight     : {weight} kg")
+    print(f"Height     : {height} m")
+    print(f"BMI        : {bmi:.2f}")
+    print(f"Category   : {category}")
+    print("============================================")
+
+
+def main():
+    print("====== ADVANCED BMI CALCULATOR ======\n")
+
+    weight = get_float_input("Enter your weight (kg): ")
+    height = get_float_input("Enter your height (meters): ")
+
+    bmi = calculate_bmi(weight, height)
+    category = get_bmi_category(bmi)
+
+    display_summary(weight, height, bmi, category)
+
+
+# Run progr
